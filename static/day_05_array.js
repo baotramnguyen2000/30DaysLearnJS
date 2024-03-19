@@ -312,4 +312,4 @@ function compare() {
 }
 
 console.log(compare());
-*/
+---*/
