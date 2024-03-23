@@ -144,71 +144,154 @@
 // console.log(findMax(0, -10, -2))
 */
 
-// Exercises: Level 2
 /*
-// program to solve quadratic equation
-let root1, root2;
+// Exercises: Level 2
+// 1. Write a function which calculates value of a linear equation
+// function solveLinEquation(a, b, c) {
+//   for (let i = 0; i * a <= c; i++) {
+//     // check if it is satisfying the equation
+//     if ((c - i * a) % b == 0) {
+//       console.log("x = " + i + ", y = " + (c - i * a) / b);
+//       return;
+//     }
+//   }
+//   console.log("No solution");
+// }
+// solveLinEquation(2, 3, 7);
+// solveLinEquation(2, 2, 0);
 
-// take input from the user
-let a = prompt("Enter the first number: ");
-let b = prompt("Enter the second number: ");
-let c = prompt("Enter the third number: ");
+// 2. Write a function which calculates value or values of a quadratic equation
+// function solveQuadEquation(a, b, c) {
+//   var root1, root2;
+//   // calculate discriminant
+//   var discriminant = b * b - 4 * a * c;
+//   // condition for real and different roots
+//   if (discriminant > 0) {
+//     root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+//     root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+//     // result
+//     return `The roots of quadratic equation are ${root1} and ${root2}`;
+//   }
+//   // condition for real and equal roots
+//   else if (discriminant == 0) {
+//     root1 = root2 = -b / (2 * a);
+//     // result
+//     return `The roots of quadratic equation are ${root1} and ${root2}`;
+//   }
+//   // if roots are not real
+//   else {
+//     let realPart = (-b / (2 * a)).toFixed(2);
+//     let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+//     // result
+//     return `The roots of quadratic equation are ${realPart} + ${imagPart}i and ${realPart} - ${imagPart}i`;
+//   }
+// }
+// console.log(solveQuadEquation(1, -1, -2));
+// console.log(solveQuadEquation(1, 4, 4));
 
-// calculate discriminant
-let discriminant = b * b - 4 * a * c;
+// 4. Write a function name showDateTime which shows time in this format: 08/01/2020 04:08 using the Date object.
+// const showDateTime = () => { return new Date(); }
+// console.log(showDateTime());
 
-// condition for real and different roots
-if (discriminant > 0) {
-    root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
-    root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+// 5. Declare a function name swapValues. This function swaps value of x to y.
+// const swapValues = (a, b) => {
+//   let x = a;
+//   a = b;
+//   b = x;
+//   return [a, b];
+// }
+// console.log(swapValues(1, 2));
 
-    // result
-    console.log(`The roots of quadratic equation are ${root1} and ${root2}`);
-}
+// 6. Declare a function name reverseArray. It takes array as a parameter and it returns the reverse of the array (don't use method).
+// const reverseArray = (arr) => {
+//   let reverse = [];
+//   for (let i = arr.length - 1; i >= 0; i--) {
+//     reverse.push(arr[i]);
+//   }
+//   return reverse;
+// }
+// console.log(reverseArray([1, 2, 3, 4, 5]));
 
-// condition for real and equal roots
-else if (discriminant == 0) {
-    root1 = root2 = -b / (2 * a);
+// 13. Declare a function name evensAndOdds . It takes a positive integer as parameter and it counts number of evens and odds in the number.
+// const evensAndOdds = n => {
+//   let evens = 0;
+//   let odds = 0;
+//   for (let i = 0; i <= n; i++) {
+//     if (i % 2 === 0) {
+//       evens++;
+//     } else {
+//       odds++;
+//     }
+//   }
+//   return [evens, odds];
+// }
+// console.log(evensAndOdds(100));
 
-    // result
-    console.log(`The roots of quadratic equation are ${root1} and ${root2}`);
-}
+// 14. Write a function which takes any number of arguments and return the sum of the arguments
+// function sumAllNums() {
+//   let sum = 0
+//   for (let i = 0; i < arguments.length; i++) {
+//     sum += arguments[i]
+//   }
+//   return sum
+// }
+// console.log(sumAllNums(1, 2, 3, 4));
+// console.log(sumAllNums(10, 20, 13, 40, 10));
 
-// if roots are not real
-else {
-    let realPart = (-b / (2 * a)).toFixed(2);
-    let imagPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+// 15. Write a function which generates a randomUserIp
+// const genUserIp = () =>
+//   `${Math.floor(Math.random() * 255) + 1}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+// console.log(genUserIp());
 
-    // result
-    console.log(
-    `The roots of quadratic equation are ${realPart} + ${imagPart}i and ${realPart} - ${imagPart}i`
-  );
-}
+// 16. Write a function which generates a randomMacAddress
+// function genMAC() {
+//   var hexDigits = "0123456789ABCDEF";
+//   var macAddress = "";
+//   for (var i = 0; i < 6; i++) {
+//     macAddress += hexDigits.charAt(Math.round(Math.random() * 15));
+//     macAddress += hexDigits.charAt(Math.round(Math.random() * 15));
+//     if (i != 5) macAddress += ":";
+//   }
+//   return macAddress;
+// }
+// console.log(genMAC());
+
+// 18. Declare a function name userIdGenerator. When this function is called it generates seven character id. The function return the id.
+// function userIdGenerator(number) {
+//   var stringGen = "";
+//   var possible =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+//   for (var i = 0; i < number; i++)
+//     stringGen += possible.charAt(Math.floor(Math.random() * possible.length));
+
+//   return stringGen;
+// }
+// console.log(userIdGenerator(7));
 */
 
-// JavaScript program to find solution
-// of ax + by = n
 
-// function to find the solution
-function solution(a, b, n) {
-  // traverse for all possible values
-  for (let i = 0; i * a <= n; i++) {
-    // check if it is satisfying the equation
-    if ((n - i * a) % b == 0) {
-      console.log("x = " + i + ", y = " + (n - i * a) / b);
+// Exercises: Level 3
+// 1. Modify the userIdGenerator function. Declare a function name userIdGeneratedByUser. It doesn’t take any parameter but it takes two inputs using prompt(). One of the input is the number of characters and the second input is the number of ids which are supposed to be generated.
+// const userIdGeneratedByUser = () => {
+//   var numberOfCharacters = prompt("Please enter a number of characters", "");
+//   var numberOfIds = prompt("Please enter a number of ids", "");
+//   var stringGen = "";
+//   var possible =
+//     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+//   for (var i = 0; i < numberOfIds; i++) {
+//     for (var j = 0; j < numberOfCharacters; j++) {
+//       stringGen += possible.charAt(Math.floor(Math.random() * possible.length));
+//     }
+//     console.log(stringGen);
+//     stringGen = "";
+//   }
+// }
+// userIdGeneratedByUser();
 
-      return;
-    }
-  }
+// 2. Write a function name rgbColorGenerator and it generates rgb colors.
+// const rgbColorGenerator = () =>
+//   `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`;
+// console.log(rgbColorGenerator());
 
-  console.log("No solution");
-}
 
-// Driver code
-
-let a = 2,
-  b = 3,
-  n = 7;
-solution(a, b, n);
-
-// This code is contributed by sanjoy_62.
