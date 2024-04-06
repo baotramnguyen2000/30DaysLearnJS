@@ -450,74 +450,174 @@ function mostUsedInitial(arr) {
 console.log(mostUsedInitial(countries));
 */
 // Exercise: Level 3
-// 1. Use the countries information, in the data folder. 
+// 1. Use the countries information, in the data folder.
 // Sort countries by name, by capital, by population.
+import { countries } from "./countries_data.js";
+const countrydata = countries;
+/*
+// Way-1
+const sortedCountries = [];
 
+const nameObject = {};
+nameObject.name = countrydata.map((country) => country["name"]);
+sortedCountries.push(nameObject);
+
+const capitalObject = {};
+capitalObject.capital = countrydata.map((country) => country["capital"]);
+sortedCountries.push(capitalObject);
+
+const populationObject = {};
+populationObject.population = countrydata.map((country) => country["population"]);
+sortedCountries.push(populationObject);
+
+console.log(sortedCountries);
+*/
+/*
+// Way-2
+const sortedCountries = [];
+const criteria = ["name", "capital", "population"];
+criteria.forEach((element) => {
+  const object = {};
+  object[element] = countrydata.map((country) => country[element]);
+  sortedCountries.push(object);
+})
+
+console.log(sortedCountries);
+*/
 // 2. Find the 10 most spoken languages:
-// Your output should look like this
-// console.log(mostSpokenLanguages(countries, 10))
-// [
-// {country: 'English',count:91},
-// {country: 'French',count:45},
-// {country: 'Arabic',count:25},
-// {country: 'Spanish',count:24},
-// {country:'Russian',count:9},
-// {country:'Portuguese', count:9},
-// {country:'Dutch',count:8},
-// {country:'German',count:7},
-// {country:'Chinese',count:5},
-// {country:'Swahili',count:4}
-// ]
+/*
+function mostSpokenLanguages(number) {
+  //make a language index
+  const allLangs = countrydata.map((element) => element.languages);
+  const mixedLangs = allLangs.toString().split(",");
+  const langIndex = [...new Set(mixedLangs)];
 
-// Your output should look like this
-// console.log(mostSpokenLanguages(countries, 3))
-// [
-// {country: 'English',count: 91},
-// {country: 'French',count: 45},
-// {country: 'Arabic',count: 25},
-// ]
+  //get the count of each language
+  function getLangNum(language) {
+    let sum = 0;
+    allLangs.forEach((element) => {
+      const langNum = element.filter((lang) => lang == language).length;
+      sum += langNum;
+    });
+    return sum;
+  }
+
+  //make objects containing language and count
+  const spokenLangs = [];
+  langIndex.forEach((element) => {
+    const object = {};
+    object.language = `${element}`;
+    object.count = getLangNum(`${element}`);
+    spokenLangs.push(object);
+  });
+
+  //sort the objects by the counts in descending order
+  const mostSpokenLangs = spokenLangs.sort((a, b) => b.count - a.count);
+
+  //print out the specified number of objects
+  const printOut = mostSpokenLangs.filter(
+    (element) => mostSpokenLangs.indexOf(element) < number
+  );
+  return printOut;
+}
+
+// console.log(mostSpokenLanguages(3));
+*/
 
 // 3. Use countries_data.js file create a function
 // which create the ten most populated countries
-// console.log(mostPopulatedCountries(countries, 10))
+/*
+function mostPopulatedCountries(number) {
+  //make a new array containing objects with country and population
+  const countriesAndPopulation = [];
+  countrydata.forEach((element) => {
+    const object = {};
+    object.country = element.name;
+    object.population = element.population;
+    countriesAndPopulation.push(object);
+  });
 
-// [
-// {country: 'China', population: 1377422166},
-// {country: 'India', population: 1295210000},
-// {country: 'United States of America', population: 323947000},
-// {country: 'Indonesia', population: 258705000},
-// {country: 'Brazil', population: 206135893},
-// {country: 'Pakistan', population: 194125062},
-// {country: 'Nigeria', population: 186988000},
-// {country: 'Bangladesh', population: 161006790},
-// {country: 'Russian Federation', population: 146599183},
-// {country: 'Japan', population: 126960000}
-// ]
+  //sort the objects by its population
+  const mostPopulated = countriesAndPopulation.sort(
+    (a, b) => b.population - a.population
+  );
 
-// console.log(mostPopulatedCountries(countries, 3))
-// [
-// {country: 'China', population: 1377422166},
-// {country: 'India', population: 1295210000},
-// {country: 'United States of America', population: 323947000}
-// ]
+  //print out the specified number of objects
+  const printOut = mostPopulated.filter(
+    (element) => mostPopulated.indexOf(element) < number
+  );
+  return printOut;
+}
 
-// 4. Try to develop a program which calculate measure of 
-// central tendency of a sample(mean, median, mode) and measure of 
+//console.log(mostPopulatedCountries(3));
+*/
+
+// 4. Try to develop a program which calculate measure of
+// central tendency of a sample(mean, median, mode) and measure of
 // variability(range, variance, standard deviation).
 // In addition to those measures find the min, max, count, percentile,
 // and frequency distribution of the sample. You can create an object called statistics
 // and create all the functions which do statistical calculations
 // as method for the statistics object. Check the output below.
-// const ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+const ages = [
+  31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37,
+  31, 34, 24, 33, 29, 26,
+];
+// count, sum, min, max, range
+const statistics = {};
 
-// console.log('Count:', statistics.count()) // 25
-// console.log('Sum: ', statistics.sum()) // 744
-// console.log('Min: ', statistics.min()) // 24
-// console.log('Max: ', statistics.max()) // 38
-// console.log('Range: ', statistics.range() // 14
-// console.log('Mean: ', statistics.mean()) // 30
-// console.log('Median: ',statistics.median()) // 29
-// console.log('Mode: ', statistics.mode()) // {'mode': 26, 'count': 5}
+statistics.count = function () {
+  return ages.length;
+};
+statistics.sum = function () {
+  return ages.reduce((a, b) => a + b);
+};
+statistics.min = function () {
+  return Math.min(...ages);
+};
+statistics.max = function () {
+  return Math.max(...ages);
+};
+statistics.range = function () {
+  return Math.max(...ages) - Math.min(...ages);
+};
+// mean : an average of a data set
+statistics.mean = function () {
+  const sum = ages.reduce((a, b) => a + b);
+  const count = ages.length;
+  // need to return explicitly
+  return Math.round(sum / count);
+};
+// median : the middle value when a data set is sorted
+statistics.median = function () {
+  const sorted = ages.sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted[mid];
+};
+// mode : the most common number in a set
+statistics.mode = function () {
+  const counts = {};
+  ages.forEach((age) => {
+    if (counts[age]) {
+      counts[age] += 1;
+    } else {
+      counts[age] = 1;
+    }
+  });
+  const maxCount = Object.values(counts).sort((a, b) => b - a)[0];
+  return Object.entries(counts).filter(
+    (element) => element[1] == maxCount
+  )[0][0];
+};
+
+console.log("Count:", statistics.count()); // 25
+console.log("Sum: ", statistics.sum()); // 744
+console.log("Min: ", statistics.min()); // 24
+console.log("Max: ", statistics.max()); // 38
+console.log("Range: ", statistics.range()); // 14
+console.log("Mean: ", statistics.mean()); // 30
+console.log("Median: ", statistics.median()); // 29
+console.log("Mode: ", statistics.mode()); // {'mode': 26, 'count': 5}
 // console.log('Variance: ',statistics.var()) // 17.5
 // console.log('Standard Deviation: ', statistics.std()) // 4.2
 // console.log('Variance: ',statistics.var()) // 17.5
@@ -535,5 +635,3 @@ console.log(mostUsedInitial(countries));
 // Variance:  17.5
 // Standard Deviation:  4.2
 // Frequency Distribution: [(20.0, 26), (16.0, 27), (12.0, 32), (8.0, 37), (8.0, 34), (8.0, 33), (8.0, 31), (8.0, 24), (4.0, 38), (4.0, 29), (4.0, 25)]
-
-
