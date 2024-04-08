@@ -149,13 +149,13 @@ console.log(setOfCompanies);
 
 // Exercises:Level 3
 // How many languages
-import { countries } from "./countries_data.js";
-const languages = countries.map((element) => element.languages);
-const allLanguages = languages.reduce((acc, cur) => [...acc, ...cur], []);
-const uniqueLanguages = new Set(allLanguages);
-console.log(languages);
-console.log(allLanguages);
-console.log(uniqueLanguages);
+// import { countries } from "./countries_data.js";
+// const languages = countries.map((element) => element.languages);
+// const allLanguages = languages.reduce((acc, cur) => [...acc, ...cur], []);
+// const uniqueLanguages = new Set(allLanguages);
+// console.log(languages);
+// console.log(allLanguages);
+// console.log(uniqueLanguages);
 // Find the 10 most spoken languages
 // first approach
 /*
