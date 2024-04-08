@@ -559,6 +559,7 @@ function mostPopulatedCountries(number) {
 // and frequency distribution of the sample. You can create an object called statistics
 // and create all the functions which do statistical calculations
 // as method for the statistics object. Check the output below.
+/*
 const ages = [
   31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37,
   31, 34, 24, 33, 29, 26,
@@ -618,6 +619,7 @@ console.log("Range: ", statistics.range()); // 14
 console.log("Mean: ", statistics.mean()); // 30
 console.log("Median: ", statistics.median()); // 29
 console.log("Mode: ", statistics.mode()); // {'mode': 26, 'count': 5}
+*/
 // console.log('Variance: ',statistics.var()) // 17.5
 // console.log('Standard Deviation: ', statistics.std()) // 4.2
 // console.log('Variance: ',statistics.var()) // 17.5
